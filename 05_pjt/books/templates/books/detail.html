@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="row mb-4">
+    <div class="col-12">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{% url 'books:index' %}">HOME</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">BOOK DETAIL</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="mb-4">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">{{ book.title }}</h5>
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{ book.description }}</p>
+          <hr />
+          <p class="card-text">
+            <strong>RATING: {{ book.review }} / 5</strong>
+          </p>
+          <p class="card-text">
+            <strong>{{ book.author }}</strong>
+          </p>
+
+        <hr />
+        <div class="col-md-4">
+          <div class="d-flex gap-2">
+            <a href="{% url 'books:update' book.pk %}" class="btn btn-secondary">UPDATE</a>
+            <form action="{% url 'books:delete' book.pk %}" method="POST" onsubmit="return confirm('Are you sure you want to delete this book description? This action cannot be undone.');">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger">DELETE</button>
+            </form>
+          </div>
+        </div>
+        <hr />
+
+        <a href="{% url 'books:index' %}" class="btn btn-primary">BACK</a>
+      </div>
+    </div>
+  </div>
+  
+  {% endblock %}

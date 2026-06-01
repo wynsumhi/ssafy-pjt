@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row mb-4">
+  <div class="col-12">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'books:index' %}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'accounts:profile' user.username %}">Profile</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Edit</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6 mx-auto">
+    <div class="card shadow">
+      <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">Edit Profile</h5>
+      </div>
+      <div class="card-body p-4">
+        <form action="{% url 'accounts:update' %}" method="POST">
+          {% csrf_token %}
+          
+          <div class="mb-3">
+            <label for="{{ form.last_name.id_for_label }}" class="form-label">Last name:</label>
+            {{ form.last_name }}
+            {% if form.last_name.errors %}
+              <div class="text-danger">
+                {% for error in form.last_name.errors %}
+                  <small>{{ error }}</small>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+
+          <div class="mb-3">
+            <label for="{{ form.first_name.id_for_label }}" class="form-label">First name:</label>
+            {{ form.first_name }}
+            {% if form.first_name.errors %}
+              <div class="text-danger">
+                {% for error in form.first_name.errors %}
+                  <small>{{ error }}</small>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+
+                    <div class="mb-3">
+            <label for="{{ form.email.id_for_label }}" class="form-label">Email address:</label>
+            {{ form.email }}
+            {% if form.email.errors %}
+              <div class="text-danger">
+                {% for error in form.email.errors %}
+                  <small>{{ error }}</small>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+          
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            {% comment %} <a href="{% url 'accounts:profile' user.username %}" class="btn btn-secondary">Cancel</a> {% endcomment %}
+            <button type="submit" class="btn btn-primary">Confirm</button>
+          </div>
+        </form>
+        
+        <hr class="my-4">
+        
+        <div class="d-grid gap-2">
+          <a href="{% url 'accounts:change_password' %}" class="btn btn-warning">Change Password</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %} 

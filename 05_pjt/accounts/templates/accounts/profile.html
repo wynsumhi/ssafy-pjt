@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="row mb-4">
+    <div class="col-12">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{% url 'books:index' %}">HOME</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">PROFILE</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mb-4">
+      <div class="card shadow h-100">
+        <div class="card-header">
+          <h5 class="mb-0">USER INFORMATION</h5>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">{{ user_profile.username }}</h4>
+          <p class="card-text">
+            <small class="text-muted">JOINED: {{ user_profile.date_joined|date:'Y-m-d' }}</small>
+          </p>
+          <p class="card-text">
+            <small class="text-muted">RECENT ACTIVITY: {{ user_profile.last_login|date:'Y-m-d' }}</small>
+          </p>
+
+          {% if request.user == user_profile %}
+            <div class="mt-4">
+              <a href="{% url 'accounts:update' %}" class="btn btn-primary btn-md">EDIT PROFILE</a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-8 mb-4">
+      <div class="card shadow h-100">
+        <div class="card-header">
+          <h5 class="mb-0">BOOK LIST</h5>
+        </div>
+        <div class="card-body">
+          {% if books %}
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>TITLE</th>
+                    <th>DETAIL</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for book in books %}
+                    <tr>
+                      <td>{{ book.title }}</td>
+                      <td>
+                        <a href="{% url 'books:detail' book.pk %}" class="btn btn-secondary">GO</a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          {% else %}
+            <div class="alert alert-info h-100 d-flex flex-column justify-content-between">
+              <span class="mb-0">NO BOOK</span>
+              <div class="mt-3">
+                <a href="{% url 'books:create' %}" class="btn btn-primary">ADD NEW BOOK</a>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

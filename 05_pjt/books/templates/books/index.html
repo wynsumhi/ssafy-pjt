@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="row mb-4">
+    <div class="col-md-8">
+      <h1 class="mb-4">BOOK LIST</h1>
+    </div>
+    <div class="col-md-4 text-end">
+      <a href="{% url 'books:create' %}" class="btn btn-primary"><i class="bi bi-plus-circle"></i>+ ADD NEW BOOK</a>
+    </div>
+  </div>
+
+{% if books %}
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for book in books %}
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">{{ book.title }}</h5>
+            <p class="card-text description-limit">{{ book.description }}</p>
+            <a href="{% url 'books:detail' book.pk %}" class="btn btn-primary">DETAIL</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="row">
+    <div class="col-12">
+      <div class="alert alert-info w-100 text-center" role="alert">
+        <h4 class="alert-heading">NO BOOK AVAILABLE</h4>
+        <p>PLEASE ADD NEW BOOK</p>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+
+{% endblock %}
