@@ -1,0 +1,19 @@
+# API 키 파일
+js/apikey.js
+
+# OS 파일
+.DS_Store
+Thumbs.db
+
+# 에디터 설정
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# 로그 파일
+*.log
+
+# 임시 파일
+*.tmp
+*.temp

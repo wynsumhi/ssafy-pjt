@@ -1,0 +1,192 @@
+/* 전역 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* 컨테이너 */
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+/* 검색 영역 */
+.search-box {
+    width: 350px;
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    overflow-y: auto;
+}
+
+.search-box h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #FF6B35;
+}
+
+/* 폼 그룹 */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-group select:hover:not(:disabled) {
+    border-color: #FF6B35;
+}
+
+.form-group select:focus {
+    outline: none;
+    border-color: #FF6B35;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.form-group select:disabled {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* 검색 버튼 */
+.search-button {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #FF6B35;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.search-button:hover {
+    background-color: #E55A2B;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+}
+
+.search-button:active {
+    transform: translateY(0);
+}
+
+/* 결과 메시지 */
+.result-message {
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    display: none;
+}
+
+.result-message.success {
+    display: block;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+.result-message.error {
+    display: block;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+.result-message.info {
+    display: block;
+    background-color: #d1ecf1;
+    border: 1px solid #bee5eb;
+    color: #0c5460;
+}
+
+/* 지도 영역 */
+.map-container {
+    flex: 1;
+    position: relative;
+}
+
+/* 커스텀 인포윈도우 스타일 */
+.custom-infowindow {
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.custom-infowindow .title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.custom-infowindow .address {
+    font-size: 12px;
+    color: #666;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .search-box {
+        width: 100%;
+        height: auto;
+        max-height: 40vh;
+    }
+
+    .map-container {
+        height: 60vh;
+    }
+}
+
+/* 스크롤바 스타일 */
+.search-box::-webkit-scrollbar {
+    width: 8px;
+}
+
+.search-box::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.search-box::-webkit-scrollbar-thumb {
+    background: #FF6B35;
+    border-radius: 4px;
+}
+
+.search-box::-webkit-scrollbar-thumb:hover {
+    background: #E55A2B;
+}
