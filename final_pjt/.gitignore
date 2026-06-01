@@ -1,0 +1,260 @@
+########################################
+# Environment & Secrets
+########################################
+.env
+.env.*
+!.env.template
+*.env
+secrets/
+.secret
+
+########################################
+# Django
+########################################
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Media files (uploads)
+media/
+
+# Static files (collectstatic 결과물)
+staticfiles/
+static_root/
+
+# Django migrations (지구깡 팀 정책에 따라 추가)
+**/migrations/*.py
+!**/migrations/__init__.py
+
+########################################
+# Python
+########################################
+# Bytecode
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Type checking
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+
+# Linting
+.ruff_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+########################################
+# Virtual Environments
+########################################
+.venv
+venv/
+ENV/
+env/
+.virtualenv
+env.bak/
+venv.bak/
+pyvenv.cfg
+pip-selfcheck.json
+
+########################################
+# Node / Vue / Frontend
+########################################
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Build outputs
+dist/
+dist-ssr/
+*.local
+
+# Vite
+.vite/
+vite.config.js.timestamp-*
+
+# Package manager lock files (팀 정책에 따라)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+########################################
+# Editor / IDE
+########################################
+# VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# JetBrains (PyCharm, WebStorm)
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Vim
+*.swp
+*.swo
+*~
+.vim/
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+########################################
+# macOS
+########################################
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+*.icloud
+
+########################################
+# Windows
+########################################
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Windows shortcuts
+*.stackdump
+
+########################################
+# Linux
+########################################
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+########################################
+# Logs & Temporary Files
+########################################
+logs/
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+########################################
+# Database Files
+########################################
+*.sql
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+
+########################################
+# Backup Files
+########################################
+*.bak
+*.backup
+*.old
+*-old
+*-backup
+
+########################################
+# Testing
+########################################
+.pytest_cache/
+.coverage
+htmlcov/
+test-results/
+playwright-report/
+coverage/
+
+########################################
+# Deployment
+########################################
+*.pem
+*.key
+*.crt
+*.p12
+
+########################################
+# Misc
+########################################
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map
