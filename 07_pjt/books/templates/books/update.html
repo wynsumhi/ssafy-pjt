@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="row mb-4">
+    <div class="col-12">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{% url 'books:index' %}">HOME</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="{% url 'books:detail' book.pk %}">BOOK DETAIL</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">EDIT BOOK</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">EDIT BOOK</h5>
+        </div>
+        <div class="card-body">
+          <form action="{% url 'books:update' book.pk %}" method="POST">
+            {% csrf_token %}
+
+            <div class="mb-3">
+              <label for="{{ form.title.id_for_label }}" class="form-label">{{ form.title.label }}</label>
+              {{ form.title }}
+              {% if form.title.errors %}
+                <div class="text-danger">
+                  {% for error in form.title.errors %}
+                    <small>{{ error }}</small>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="mb-3">
+              <label for="{{ form.description.id_for_label }}" class="form-label">{{ form.description.label }}</label>
+              {{ form.description }}
+              {% if form.description.errors %}
+                <div class="text-danger">
+                  {% for error in form.description.errors %}
+                    <small>{{ error }}</small>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="{{ form.rating.id_for_label }}" class="form-label">{{ form.rating.label }}</label>
+              {{ form.rating }}
+              {% if form.rating.errors %}
+                <div class="text-danger">
+                  {% for error in form.rating.errors %}
+                    <small>{{ error }}</small>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="col-md-6">
+              <label for="{{ form.author.id_for_label }}" class="form-label">{{ form.author.label }}</label>
+              {{ form.author }}
+              {% if form.author.errors %}
+                <div class="text-danger">
+                  {% for error in form.author.errors %}
+                    <small>{{ error }}</small>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <a href="{% url 'books:detail' book.pk %}" class="btn btn-secondary">CANCEL</a>
+              <button type="submit" class="btn btn-warning">UPDATE BOOK</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

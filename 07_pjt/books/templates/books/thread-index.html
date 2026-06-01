@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="row mb-4">
+    <div class="col-12">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{% url 'books:index' %}">HOME</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="{% url 'books:detail' book.pk %}">BOOK DETAIL</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">THREAD INDEX</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-md-8">
+      <h1 class="mb-4">THREAD LIST - {{ book.title }}</h1>
+    </div>
+    <div class="col-md-4 text-end">
+      <a href="{% url 'books:thread_create' book.pk %}" class="btn btn-primary"><i class="bi bi-plus-circle"></i>+ ADD NEW THREAD</a>
+    </div>
+  </div>
+
+{% if threads %}
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for thread in threads %}
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">{{ thread.title }}</h5>
+            <p class="card-text description-limit">{{ thread.content }}</p>
+            <a href="{% url 'books:thread_detail' book.pk thread.pk %}" class="btn btn-outline-primary">DETAIL</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="row">
+    <div class="col-12">
+      <div class="alert alert-info w-100 text-center" role="alert">
+        <h4 class="alert-heading">NO THREAD AVAILABLE</h4>
+        <p>PLEASE ADD NEW THREAD</p>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+  <div class="row mt-4">
+    <div class="col-12">
+      <a href="{% url 'books:detail' book.pk %}" class="btn btn-primary">BACK</a>
+    </div>
+  </div>
+
+{% endblock %}

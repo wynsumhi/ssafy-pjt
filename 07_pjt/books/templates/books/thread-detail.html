@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row mb-4">
+  <div class="col-12">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'books:index' %}">HOME</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a href="{% url 'books:detail' book.pk %}">BOOK DETAIL</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a href="{% url 'books:thread_index' book.pk %}">THREAD INDEX</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">THREAD DETAIL</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<div class="row">
+  <div class="mb-4">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">{{ thread.title }}</h5>
+      </div>
+      <div class="card-body">
+        <p class="card-text">{{ thread.content }}</p>
+        <hr />
+        <p class="card-text">
+          <strong>CREATED AT: {{ thread.created_at }}</strong>
+        </p>
+
+        <p class="card-text">
+          <strong>CREATED BY: {{ thread.user.username }}</strong>
+        </p>
+
+        <hr />
+        {% comment %} UPDATE DELETE 버튼 {% endcomment %}
+        <div class="col-md-4">
+          <div class="d-flex gap-2">
+            <a href="{% url 'books:thread_update' book.pk thread.pk %}" class="btn btn-secondary">UPDATE</a>
+            <form action="{% url 'books:thread_delete' book.pk thread.pk %}" method="POST"
+              onsubmit="return confirm('Are you sure you want to delete this thread? This action cannot be undone.');">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger">DELETE</button>
+            </form>
+          </div>
+        </div>
+        <hr />
+
+        {% comment %} BACK 버튼 {% endcomment %}
+        <a href="{% url 'books:thread_index' book.pk %}" class="btn btn-primary">BACK</a>
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
